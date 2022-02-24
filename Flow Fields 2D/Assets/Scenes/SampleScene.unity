@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b40536e0387bf8458ce8e9cc4a304a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 5, y: 5}
+  gridSize: {x: 14, y: 11}
   cellRadius: 0.5
   startPosition: {x: 0, y: 0}
 --- !u!4 &1725180241
