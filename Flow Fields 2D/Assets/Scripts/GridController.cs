@@ -10,6 +10,8 @@ public class GridController : MonoBehaviour
     public float cellRadius = 0.5f; // Default to 1 unity wide
     public FlowField currentFlowField;
     public Vector2 startPosition;
+    public bool showCostFieldCost, showIntegrationFieldCost, showFlowFieldSprites;
+    public Sprite[] flowFieldIcons; // north - northwest is 0 - 7, X is 8, target is 9
     private bool showCost = false;
 
     private void InitializeFlowField()
@@ -24,6 +26,13 @@ public class GridController : MonoBehaviour
         {
             InitializeFlowField();
             currentFlowField.CreateCostField();
+
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f); // Screen space
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition); // Convert screen space to world space
+            GridCell destinationCell = currentFlowField.GetCellFromWorldPosition(worldMousePosition);
+            currentFlowField.CreateIntegrationField(destinationCell);
+
+            currentFlowField.CreateFlowField();
         }
     }
 
@@ -37,7 +46,30 @@ public class GridController : MonoBehaviour
         else
         {
             DrawGrid(Color.green);
-            ShowCost();
+
+            if (showCostFieldCost)
+            {
+                showIntegrationFieldCost = false;
+                showFlowFieldSprites = false;
+
+                ShowCostFlowField();
+            }
+
+            if (showIntegrationFieldCost)
+            {
+                showCostFieldCost = false;
+                showFlowFieldSprites = false;
+
+                ShowCostIntegrationField();
+            }
+
+            if (showFlowFieldSprites)
+            {
+                showCostFieldCost = false;
+                showIntegrationFieldCost = false;
+
+                ShowFlowFieldSpritesField();
+            }
         }
     }
 
@@ -60,7 +92,7 @@ public class GridController : MonoBehaviour
         }
     }
 
-    private void ShowCost()
+    private void ShowCostFlowField()
     {
         // Variables
         GUIStyle style;
@@ -72,5 +104,24 @@ public class GridController : MonoBehaviour
         {
             Handles.Label(cell.worldPosition, cell.cost.ToString(), style);
         }
+    }
+
+    private void ShowCostIntegrationField()
+    {
+        // Variables
+        GUIStyle style;
+
+        style = new GUIStyle(GUI.skin.label);
+        style.alignment = TextAnchor.MiddleCenter;
+
+        foreach (GridCell cell in currentFlowField.grid)
+        {
+            Handles.Label(cell.worldPosition, cell.bestCost.ToString(), style);
+        }
+    }
+
+    private void ShowFlowFieldSpritesField()
+    {
+
     }
 }
