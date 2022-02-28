@@ -231,4 +231,9 @@ public class FlowField
         westDirection,
         northWestDirection
     };
+
+    public Vector2Int GetNoDirectionCell()
+    {
+        return noDirection;
+    }
 }

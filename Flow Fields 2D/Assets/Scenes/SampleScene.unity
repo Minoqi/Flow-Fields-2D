@@ -331,11 +331,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b40536e0387bf8458ce8e9cc4a304a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 11, y: 7}
+  gridSize: {x: 11, y: 9}
   cellRadius: 0.5
   startPosition: {x: 0, y: 0}
-  showFlowFieldCost: 1
+  showCostFieldCost: 0
   showIntegrationFieldCost: 0
+  showFlowFieldSprites: 0
+  flowFieldIcons:
+  - {fileID: 21300000, guid: ce0f827cc92befc4486e7db870b96bb7, type: 3}
+  - {fileID: 21300000, guid: 8a35ae4247f167b429babdba741f028a, type: 3}
+  - {fileID: 21300000, guid: cdb78efe06f5855488e02ae4b313389b, type: 3}
+  - {fileID: 21300000, guid: 4913d320f9658094585a82045dfcf1c3, type: 3}
+  - {fileID: 21300000, guid: f99c298f32df07d439c500c23a5bb71c, type: 3}
+  - {fileID: 21300000, guid: feb24bb7d688804409547f431e7e3264, type: 3}
+  - {fileID: 21300000, guid: 7dab79fffb9e96141b2ba33d4efcc470, type: 3}
+  - {fileID: 21300000, guid: 5bf138a8e7388d1478ba6766a4510c2e, type: 3}
+  - {fileID: 21300000, guid: 2f96350f585312b47a6e040d721c3cc2, type: 3}
+  - {fileID: 21300000, guid: 210ae7faa8314bf4da64ddc319e1c9ec, type: 3}
 --- !u!4 &1725180241
 Transform:
   m_ObjectHideFlags: 0

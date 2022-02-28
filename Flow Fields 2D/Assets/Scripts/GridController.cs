@@ -122,6 +122,18 @@ public class GridController : MonoBehaviour
 
     private void ShowFlowFieldSpritesField()
     {
+        foreach (GridCell cell in currentFlowField.grid)
+        {
+            //Handles.Label(cell.worldPosition, cell.cost.ToString(), style);
 
+            if (cell.bestDirection == currentFlowField.GetNoDirectionCell())
+            {
+
+            }
+            else
+            {
+                
+            }
+        }
     }
 }
