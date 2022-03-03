@@ -28,7 +28,9 @@ public class GridController : MonoBehaviour
             currentFlowField.CreateCostField();
 
             Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f); // Screen space
+            Debug.Log("Mouse Y: " + mousePosition.y);
             Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition); // Convert screen space to world space
+            Debug.Log("Mouse Y Converted: " + worldMousePosition.y);
             GridCell destinationCell = currentFlowField.GetCellFromWorldPosition(worldMousePosition);
             currentFlowField.CreateIntegrationField(destinationCell);
 
@@ -68,7 +70,10 @@ public class GridController : MonoBehaviour
                 showCostFieldCost = false;
                 showIntegrationFieldCost = false;
 
-                ShowFlowFieldSpritesField();
+                foreach (GridCell cell in currentFlowField.grid)
+                {
+                    ShowFlowFieldSpritesField(cell);
+                }
             }
         }
     }
@@ -120,20 +125,108 @@ public class GridController : MonoBehaviour
         }
     }
 
-    private void ShowFlowFieldSpritesField()
+    private void ShowFlowFieldSpritesField(GridCell cell)
     {
-        foreach (GridCell cell in currentFlowField.grid)
+
+        /*foreach (GridCell cell in currentFlowField.grid)
         {
-            //Handles.Label(cell.worldPosition, cell.cost.ToString(), style);
+            GameObject spriteHolder;
+            SpriteRenderer spriteRend;
+            spriteHolder = new GameObject();
+            spriteRend = spriteHolder.AddComponent<SpriteRenderer>();
+            spriteRend.sortingOrder = 2;
+            spriteHolder.transform.parent = transform;
+            spriteHolder.transform.position = cell.worldPosition;
 
-            if (cell.bestDirection == currentFlowField.GetNoDirectionCell())
+            if (cell.bestDirection == currentFlowField.GetNoDirectionCell() || cell.cost == byte.MaxValue)
             {
+                spriteRend.sprite = flowFieldIcons[8];
+            }
+            else if (cell.cost == 0)
+            {
+                spriteRend.sprite = flowFieldIcons[8];
+            }
+            else if (cell.bestDirection == currentFlowField.GetNorthDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[0];
+            }
+            else if (cell.bestDirection == currentFlowField.GetNorthEastDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[1];
+            }
+            else if (cell.bestDirection == currentFlowField.GetEastDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[2];
+            }
+            else if (cell.bestDirection == currentFlowField.GetSouthEastDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[3];
+            }
+            else if (cell.bestDirection == currentFlowField.GetSouthDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[4];
+            }
+            else if (cell.bestDirection == currentFlowField.GetSouthWestDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[5];
+            }
+            else if (cell.bestDirection == currentFlowField.GetWestDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[6];
+            }
+            else if (cell.bestDirection == currentFlowField.GetNorthWestDirectionCell())
+            {
+                spriteRend.sprite = flowFieldIcons[7];
+            }
+        }*/
 
-            }
-            else
-            {
-                
-            }
+        GameObject spriteHolder;
+        SpriteRenderer spriteRend;
+        spriteHolder = new GameObject();
+        spriteRend = spriteHolder.AddComponent<SpriteRenderer>();
+        spriteRend.sortingOrder = 2;
+        spriteHolder.transform.parent = transform;
+        spriteHolder.transform.position = cell.worldPosition;
+
+        if (cell.bestDirection == currentFlowField.GetNoDirectionCell() || cell.cost == byte.MaxValue)
+        {
+            spriteRend.sprite = flowFieldIcons[8];
+        }
+        else if (cell.cost == 0)
+        {
+            spriteRend.sprite = flowFieldIcons[8];
+        }
+        else if (cell.bestDirection == currentFlowField.GetNorthDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[0];
+        }
+        else if (cell.bestDirection == currentFlowField.GetNorthEastDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[1];
+        }
+        else if (cell.bestDirection == currentFlowField.GetEastDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[2];
+        }
+        else if (cell.bestDirection == currentFlowField.GetSouthEastDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[3];
+        }
+        else if (cell.bestDirection == currentFlowField.GetSouthDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[4];
+        }
+        else if (cell.bestDirection == currentFlowField.GetSouthWestDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[5];
+        }
+        else if (cell.bestDirection == currentFlowField.GetWestDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[6];
+        }
+        else if (cell.bestDirection == currentFlowField.GetNorthWestDirectionCell())
+        {
+            spriteRend.sprite = flowFieldIcons[7];
         }
     }
 }

@@ -236,4 +236,45 @@ public class FlowField
     {
         return noDirection;
     }
+
+    public Vector2Int GetNorthDirectionCell()
+    {
+        return northDirection;
+    }
+
+    public Vector2Int GetNorthEastDirectionCell()
+    {
+        return northEastDirection;
+    }
+
+    public Vector2Int GetEastDirectionCell()
+    {
+        return eastDirection;
+    }
+
+    public Vector2Int GetSouthEastDirectionCell()
+    {
+        return southEastDirection;
+    }
+
+    public Vector2Int GetSouthDirectionCell()
+    {
+        return southDirection;
+    }
+
+    public Vector2Int GetSouthWestDirectionCell()
+    {
+        return southWestDirection;
+    }
+
+    public Vector2Int GetWestDirectionCell()
+    {
+        return westDirection;
+    }
+
+
+    public Vector2Int GetNorthWestDirectionCell()
+    {
+        return northWestDirection;
+    }
 }
