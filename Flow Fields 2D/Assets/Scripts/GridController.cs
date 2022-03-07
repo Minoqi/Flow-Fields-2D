@@ -16,6 +16,7 @@ public class GridController : MonoBehaviour
 
     private void InitializeFlowField()
     {
+        startPosition =  transform.position;
         currentFlowField = new FlowField(cellRadius, gridSize, startPosition);
         currentFlowField.CreateGrid();
     }
@@ -127,59 +128,6 @@ public class GridController : MonoBehaviour
 
     private void ShowFlowFieldSpritesField(GridCell cell)
     {
-
-        /*foreach (GridCell cell in currentFlowField.grid)
-        {
-            GameObject spriteHolder;
-            SpriteRenderer spriteRend;
-            spriteHolder = new GameObject();
-            spriteRend = spriteHolder.AddComponent<SpriteRenderer>();
-            spriteRend.sortingOrder = 2;
-            spriteHolder.transform.parent = transform;
-            spriteHolder.transform.position = cell.worldPosition;
-
-            if (cell.bestDirection == currentFlowField.GetNoDirectionCell() || cell.cost == byte.MaxValue)
-            {
-                spriteRend.sprite = flowFieldIcons[8];
-            }
-            else if (cell.cost == 0)
-            {
-                spriteRend.sprite = flowFieldIcons[8];
-            }
-            else if (cell.bestDirection == currentFlowField.GetNorthDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[0];
-            }
-            else if (cell.bestDirection == currentFlowField.GetNorthEastDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[1];
-            }
-            else if (cell.bestDirection == currentFlowField.GetEastDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[2];
-            }
-            else if (cell.bestDirection == currentFlowField.GetSouthEastDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[3];
-            }
-            else if (cell.bestDirection == currentFlowField.GetSouthDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[4];
-            }
-            else if (cell.bestDirection == currentFlowField.GetSouthWestDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[5];
-            }
-            else if (cell.bestDirection == currentFlowField.GetWestDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[6];
-            }
-            else if (cell.bestDirection == currentFlowField.GetNorthWestDirectionCell())
-            {
-                spriteRend.sprite = flowFieldIcons[7];
-            }
-        }*/
-
         GameObject spriteHolder;
         SpriteRenderer spriteRend;
         spriteHolder = new GameObject();

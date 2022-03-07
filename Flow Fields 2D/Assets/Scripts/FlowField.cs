@@ -44,22 +44,16 @@ public class FlowField
 
     public void CreateCostField()
     {
-        Debug.Log("Creating cost field");
-
         Vector3 cellHalfSize = Vector3.one * cellRadius;
         int terrainMask = LayerMask.GetMask("Impassible", "Rough Terrain");
 
         foreach(GridCell currentCell in grid)
         {
-            Debug.Log("First foreach");
-
             Collider[] obstacles = Physics.OverlapBox(currentCell.worldPosition, cellHalfSize, Quaternion.identity, terrainMask);
             bool hasIncreasedCost = false;
 
             foreach(Collider col in obstacles)
             {
-                Debug.Log("Layer for " + col + " = " + col.gameObject.layer);
-
                 if (col.gameObject.layer == 8)
                 {
                     currentCell.IncreaseCost(255);
@@ -168,7 +162,7 @@ public class FlowField
         // Variables
         int x, y;
         float percentX = worldPosition.x / (gridSize.x * cellDiameter);
-        float percentY = worldPosition.z / (gridSize.y * cellDiameter);
+        float percentY = worldPosition.y / (gridSize.y * cellDiameter);
 
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
